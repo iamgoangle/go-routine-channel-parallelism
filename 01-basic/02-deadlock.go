@@ -1,28 +1,23 @@
 package main
 
 import (
-	"fmt"
 	"time"
 )
 
 func main() {
 	register := make(chan bool)
 
-	go func() {
+	func() {
 		register <- true
 	}()
 
-	go func() {
+	func() {
 		register <- true
 	}()
 
-	go func() {
+	func() {
 		register <- true
 	}()
-
-	for v := range register {
-		fmt.Println(v)
-	}
 
 	time.Sleep(10 * time.Second)
 }
